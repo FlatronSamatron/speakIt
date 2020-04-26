@@ -1,0 +1,129 @@
+.container{
+    max-width: 1140px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* height: 100vh; */
+}
+.difficult{
+    width: 100%;
+    margin: 30px 0 150px 20px;
+}
+nav ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    position: relative;
+}
+nav ul:before{
+    top: 9px;
+    left: 3px;
+    position: absolute;
+    display: block;
+    content: '';
+    height: 3px;
+    width: 170px;
+    background:#00c49d;
+    z-index: -1;
+}
+.dif{
+    width: 20px;
+    height: 20px;
+    background:#00c49d;
+    border-radius: 50%;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.active{
+    box-shadow: 0 0 0 2px #00c49d, inset 0 0 0 2px #ffffff, inset 0 0 0 3px #00c49d;
+}
+.words{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.item{
+    width: 200px;
+    height: 70px;
+    border: 1px solid rgb(206, 212, 218);
+    margin: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.item:hover{
+    box-shadow: 5px 5px 5px 0px rgba(227,227,227,1);
+}
+
+.item p {
+    margin: 0;
+}
+
+.word{
+    color: #0e1e25;
+    font-size: 22px;
+}
+
+.transcription {
+    color: rgba(14, 30, 37, .7);
+    font-size: 18px;
+}
+
+.translation{
+    display: none;
+}
+.main-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.translate{
+    color: #0e1e25;
+    font-size: 22px;
+    font-weight: bold;
+    height: 22px;
+}
+.main-img img{
+    width: 390px;
+    height: 260px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 25px rgba(118,118,118,.25)
+}
+.buttons{
+    width: calc(100% - 20px);
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-gap: 20px;
+}
+
+.button{
+    padding: 15px;
+    cursor: pointer;
+    background: #00c49d;
+    font-size: 24px;
+    color: #fff;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+}
+
+.button:hover{
+    background: hsl(168, 100%, 26%);
+}
+
+.activeItem {
+    border: 1px solid rgb(0, 173, 159);
+    background-color: rgba(0, 173, 159, .15);
+}
