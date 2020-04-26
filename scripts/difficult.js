@@ -5,6 +5,7 @@ export default class Difficult{
     construcor(){
         this.dot = null
         this.mainImage = null
+        this.point = 0
     }
     renderHtmlElement(parent, tag, className, id, innerHtml, src) {
         const element = document.createElement(tag);    
@@ -36,9 +37,13 @@ export default class Difficult{
                 el.classList.remove('active')
             });
             this.dot.classList.add('active')
-            let isDot = false
-            getWord(0,i, isDot)
+            let isDot = false;
+            let point = Math.floor(Math.random() * (29 - 0) + 0)
+            getWord(point,i, isDot)
             this.mainImage.updateState('./blank.jpg','')
+            document.querySelectorAll('.item').forEach(el=>el.classList.add('stopHover'))
+            if(document.querySelector('.main-img input')){document.querySelector('.main-img input').remove()}
+            document.querySelector('.wrong').innerHTML = ''
         })
     }
     render(i) {

@@ -5,7 +5,8 @@ export default class ButtonSpeak{
         this.words = null;
         this.img = null;
         this.mainImage = null
-        this.inputText = null
+        this.inputText = null;
+        this.isRec = true
     }
     renderHtmlElement(parent, tag, className, id, innerHtml, src, atrName, atrValue) {
         const element = document.createElement(tag);    
@@ -47,7 +48,7 @@ export default class ButtonSpeak{
         this.mainImage = mainImage
     }
     correctItem(transcript){
-        console.log(transcript)
+        // console.log(transcript)
         const item = document.querySelectorAll('.item')
         item.forEach((el,i)=>{
             if(el.querySelector('.word').innerText.toLowerCase() == transcript){
@@ -56,18 +57,23 @@ export default class ButtonSpeak{
             }
         })
     }
+
+    
     recognitionSpeak(){
+        document.querySelectorAll('.item').forEach(el=>el.classList.remove('activeItem'))
+        document.querySelectorAll('.item').forEach(el=>el.classList.add('stopHover'))
+        if(this.inputText != null && document.querySelector('.main-img input')){document.querySelector('.main-img input').remove()}
         this.inputText = this.renderHtmlElement(document.querySelector('.main-img') , 'input', 'input',null,'',null, 'readonly');
         window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-        const recognition = new SpeechRecognition();
+        const recognition = new SpeechRecognition()
         recognition.interimResults = true;
         recognition.lang = 'en-US';
+        
+        // let p = document.createElement('p');
+        // document.body.append(p);
 
-        let p = document.createElement('p');
-        document.body.append(p);
-
-        recognition.addEventListener('result', e => {
+        recognition.onresult =  e => {
             const transcript = Array.from(e.results)
             .map(res => res[0])
             .map(res => res.transcript)
@@ -78,11 +84,15 @@ export default class ButtonSpeak{
                 }
                 this.inputText.value = transcript
             })
-        })
+        }
 
-        recognition.addEventListener('end', recognition.start)
-        
+        if(this.isRec){
+            recognition.onend = recognition.start
+        } else {
+            recognition.onend = recognition.stop
+        }
 
         recognition.start()
+        this.isRec = false
     }
 }

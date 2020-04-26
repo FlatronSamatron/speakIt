@@ -5,7 +5,6 @@ import ButtonRestart from './buttonRestart'
 import ButtonSpeak from './buttonSpeak'
 import ButtonResult from './buttonResult'
 
-// let isDot = true;
 
 
 const mainImage = new ItemImage();
@@ -36,30 +35,20 @@ const words = (json,isDot) => {
     items.forEach((el,i) => {
         if(isDot){
             const dif = new Difficult()
-            if(i<5 && isDot){dif.init(i,mainImage)}
-            const card = new ItemWord(el,mainImage)
+            if(i<6 && isDot){dif.init(i,mainImage)}
+            const card = new ItemWord(el,mainImage,buttonResult)
             card.init()
         } else {
             document.querySelectorAll('.item')[0].remove()
-            const card = new ItemWord(el,mainImage)
+            const card = new ItemWord(el,mainImage,buttonResult)
             card.init()
         }
-
-
-        // if(isDot){
-        //     const dif = new Difficult()
-        //     if(i<5 && isDot){dif.init(i)}
-        //     const card = new ItemWord(el,mainImage)
-        //     card.init()
-        // } else {
-        //     card.updateState(el)
-        // }
-        // const dif = new Difficult()
-        // if(i<5 && isDot){dif.init(i)}
-        // const card = new ItemWord(el,mainImage)
-        // isDot ? card.init() : card.updateState(el,i,card)
     });
 }
 
 getWord(0,0)
 
+document.querySelector('.return').addEventListener('click', ()=>{
+    document.querySelector('.container').style.display = 'flex';
+document.querySelector('.result').style.display = 'none'
+})
