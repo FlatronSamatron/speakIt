@@ -31,7 +31,14 @@ export default class ButtonRestart{
     }
     setHandler(){
         this.buttonHTML.addEventListener('click',()=>{
-            console.log('hi')
+            document.querySelectorAll('.item').forEach(el=>{
+                el.classList.remove('activeItem');
+                el.classList.remove('stopHover')
+            })
+            document.querySelector('.main-img .translate').innerHTML = ''
+            document.querySelector('.input').remove()
+            console.log(document.querySelector('.sucess').childNodes)
+            
         })
     }
 }

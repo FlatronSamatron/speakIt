@@ -6,7 +6,7 @@ export default class ButtonSpeak{
         this.img = null;
         this.mainImage = null
         this.inputText = null;
-        this.isRec = true
+        this.isRec = true;
     }
     renderHtmlElement(parent, tag, className, id, innerHtml, src, atrName, atrValue) {
         const element = document.createElement(tag);    
@@ -54,12 +54,34 @@ export default class ButtonSpeak{
             if(el.querySelector('.word').innerText.toLowerCase() == transcript){
                 el.classList.add('activeItem')
                 this.mainImage.updateState(this.img[i],'')
+                this.upgradeInfo(transcript)
             }
         })
     }
-
-    
+    upgradeInfo(transcript){
+        let sucessWord
+        document.querySelectorAll('.item-info .word').forEach(el => {
+            if(el.innerHTML.toLowerCase() == transcript){
+                sucessWord = el.parentElement
+                el.parentElement.remove()
+                document.querySelector('.sucess').append(sucessWord)
+                document.querySelector('.suc').innerHTML = 'Не знаю: '+ document.querySelector('.sucess').childNodes.length
+                document.querySelector('.error').innerHTML = 'Ошибок: '+ document.querySelector('.wrong').childNodes.length
+            }
+        })
+    }
+    // addStar(){
+    //     if(this.star){
+    //     let div = document.createElement('div')
+    //     div.className = 'star'
+    //     document.querySelector('.score').append(div)
+    //     this.star = false;
+    //     }
+    // }
     recognitionSpeak(){
+        // document.querySelectorAll('.item-info .word').forEach(el => {
+        //     console.log(el.innerHTML)
+        // })
         document.querySelectorAll('.item').forEach(el=>el.classList.remove('activeItem'))
         document.querySelectorAll('.item').forEach(el=>el.classList.add('stopHover'))
         if(this.inputText != null && document.querySelector('.main-img input')){document.querySelector('.main-img input').remove()}

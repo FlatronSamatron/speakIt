@@ -52,3 +52,9 @@ document.querySelector('.return').addEventListener('click', ()=>{
     document.querySelector('.container').style.display = 'flex';
 document.querySelector('.result').style.display = 'none'
 })
+
+
+document.querySelector('.intro-btn').addEventListener('click', ()=>{
+    document.querySelector('.container').style.display = 'flex';
+document.querySelector('.main').style.display = 'none'
+})
