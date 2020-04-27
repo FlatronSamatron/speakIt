@@ -255,3 +255,12 @@ h1{
     border-radius: 50%;
     padding: 5px;
 }
+
+@media (max-width: 450px) {
+    .words {
+        justify-content: center;
+    }
+    .main-img img{
+        width: 320px;
+    }
+  }
