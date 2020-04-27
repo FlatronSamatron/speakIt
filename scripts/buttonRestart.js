@@ -37,9 +37,12 @@ export default class ButtonRestart{
             })
             document.querySelector('.main-img .translate').innerHTML = ''
             document.querySelector('.input').remove()
-            console.log(document.querySelector('.sucess').childNodes)
             let suc = document.querySelector('.sucess').childNodes;
-            document.querySelector('.sucess').childNodes.remove()
+            suc.forEach(el => document.querySelector('.wrong').append(el)) 
+            document.querySelector('.sucess').childNodes.forEach(el=> el.remove())
+            
+            document.querySelector('.suc').innerHTML = 'Не знаю: '+ document.querySelector('.sucess').childNodes.length
+            document.querySelector('.error').innerHTML = 'Ошибок: '+ document.querySelector('.wrong').childNodes.length
         })
     }
 }

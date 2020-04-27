@@ -58,3 +58,18 @@ document.querySelector('.intro-btn').addEventListener('click', ()=>{
     document.querySelector('.container').style.display = 'flex';
 document.querySelector('.main').style.display = 'none'
 })
+
+document.querySelector('.newGame').addEventListener('click', ()=>{
+    // document.querySelector('.main-img .translate').innerHTML = ''
+    document.querySelectorAll('.item').forEach(el=>{
+        el.classList.remove('activeItem');
+        el.classList.remove('stopHover')
+    })
+    document.querySelector('.input').value = ''
+    let suc = document.querySelector('.sucess').childNodes;
+    suc.forEach(el => document.querySelector('.wrong').append(el)) 
+    document.querySelector('.sucess').childNodes.forEach(el=> el.remove())
+            
+    document.querySelector('.suc').innerHTML = 'Не знаю: '+ document.querySelector('.sucess').childNodes.length
+    document.querySelector('.error').innerHTML = 'Ошибок: '+ document.querySelector('.wrong').childNodes.length
+})
