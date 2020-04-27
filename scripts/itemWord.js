@@ -52,6 +52,7 @@ export default class ItemWord{
         const wrapperHTML = this.renderHtmlElement( this.parent, 'div', 'item');
         const wordHTML = this.renderHtmlElement(wrapperHTML, 'p', 'word', null, this.word);
         const transcriptionHTML = this.renderHtmlElement(wrapperHTML, 'p', 'transcription', null, this.transcription);
+        const img = this.renderHtmlElement(wrapperHTML, 'img', 'audio-img', null, null, './speaker.png');
         this.cardHTML = wrapperHTML;
     }
     init(){
