@@ -38,7 +38,8 @@ export default class ButtonRestart{
             document.querySelector('.main-img .translate').innerHTML = ''
             document.querySelector('.input').remove()
             console.log(document.querySelector('.sucess').childNodes)
-            
+            let suc = document.querySelector('.sucess').childNodes;
+            document.querySelector('.sucess').childNodes.remove()
         })
     }
 }

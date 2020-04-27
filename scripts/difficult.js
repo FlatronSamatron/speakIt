@@ -41,7 +41,7 @@ export default class Difficult{
             let point = Math.floor(Math.random() * (29 - 0) + 0)
             getWord(point,i, isDot)
             this.mainImage.updateState('./blank.jpg','')
-            document.querySelectorAll('.item').forEach(el=>el.classList.add('stopHover'))
+            document.querySelectorAll('.item').forEach(el=>el.classList.remove('stopHover'))
             if(document.querySelector('.main-img input')){document.querySelector('.main-img input').remove()}
             document.querySelector('.wrong').innerHTML = ''
         })
